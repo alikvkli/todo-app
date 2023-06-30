@@ -33,8 +33,8 @@ export default function TodoCard({ data }) {
     }
 
     return (
-        <div className={classNames("flex flex-col items-start gap-4 cursor-pointer hover:before:content-[''] hover:before:w-1 hover:before:rounded-md hover:before:absolute hover:before:top-0  hover:before:left-0  hover:before:h-full justify-between group w-full p-6 bg-white rounded-md shadow-md relative", {
-            "hover:before:bg-green-500": data?.status === "1",
+        <div className={classNames("flex flex-col items-start gap-4 cursor-pointer hover:before:content-[''] hover:before:w-1 hover:before:rounded-sm hover:before:absolute hover:before:top-0  hover:before:left-0  hover:before:h-full justify-between group w-full p-6 bg-white rounded-md shadow-md relative", {
+            "hover:before:bg-green-500 before:bg-green-600 before:content-[''] before:w-1  before:rounded-sm  before:absolute before:top-0 before:left-0 before:h-full": data?.status === "1",
             "hover:before:bg-zinc-500": data?.status === "2"
         })}>
             <div className="flex justify-center items-center gap-2">
