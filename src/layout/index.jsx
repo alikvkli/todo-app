@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { AiOutlineInfoCircle, AiOutlineMenu, AiOutlineCloseCircle } from "react-icons/ai"
 import { GiThink } from "react-icons/gi"
-import { useRef, useState } from "react";
+import {  useState } from "react";
 import { addTodo, authService, getAllTodo } from "../services";
 import { setLogout, setSingleTodo, setTodos, setUser } from "../features/todo";
 
