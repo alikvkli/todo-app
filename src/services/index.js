@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "http://alikvkli.dev/gateway/api/v1"
+    baseURL: "https://alikvkli.dev/gateway/api/v1"
     //baseURL: "http://127.0.0.1:8000/api/v1"
 });
 

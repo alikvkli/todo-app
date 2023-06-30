@@ -44,7 +44,7 @@ export default function TodoCard({ data }) {
                         <AiOutlineCheckCircle color="green" size={24} />
                     )}
                 </div>
-                <small>{data?.action}</small>
+                <small dangerouslySetInnerHTML={{__html: data?.action}} />
             </div>
             <div className="flex justify-between items-center border-t-[1px] border-white  w-full">
                 <small className="text-[11px] text-zinc-500">{new Date(data?.created_at).toLocaleString("tr-TR")}</small>

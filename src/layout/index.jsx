@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { AiOutlineInfoCircle, AiOutlineMenu, AiOutlineCloseCircle } from "react-icons/ai"
 import { GiThink } from "react-icons/gi"
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { addTodo, authService, getAllTodo } from "../services";
 import { setLogout, setSingleTodo, setTodos, setUser } from "../features/todo";
 
@@ -33,7 +33,7 @@ export default function Layout({ children, title }) {
     }
 
     const handleAddTodo = () => {
-        addTodo({ user_id: user.id, action: text }).then(res => {
+        addTodo({ user_id: user.id, action: text.replace(/\n/g, '<br>') }).then(res => {
             if (res && res.reasonCode === 1) {
                 setText("")
                 dispatch(setSingleTodo(res.payload));
@@ -56,10 +56,10 @@ export default function Layout({ children, title }) {
                 "max-sm:w-full  max-sm:top-0 max-sm:left-0 max-sm:fixed max-sm:bg-white max-sm:h-full max-sm:pt-8 max-sm:z-10": open || !login,
                 "max-sm:hidden": !open && login
             })}>
-                <div className={classNames("hidden",{
+                <div className={classNames("hidden", {
                     "max-sm:block max-sm:absolute max-sm:right-4 max-sm:top-4": open
                 })}>
-                    <AiOutlineCloseCircle className="text-indigo-600" size={28} />
+                    <AiOutlineCloseCircle onClick={handleMenu} className="text-indigo-600" size={28} />
                 </div>
                 <div className="flex flex-col  gap-4 p-4">
                     {login ? (
@@ -91,7 +91,7 @@ export default function Layout({ children, title }) {
                 <div className="mt-auto p-4 flex flex-col gap-2 items-center justify-center">
                     {login ? (
                         <>
-                            <input type="text" value={text} onChange={e => setText(e.target.value)} className="w-full  focus:outline-none border-[1px] border-zinc-200 p-2 rounded-md text-sm" placeholder="Todo ekle..." />
+                            <textarea value={text} rows={6} onChange={e => setText(e.target.value)} className="w-full  resize-none focus:outline-none border-[1px] border-zinc-200 p-2 rounded-md text-sm" placeholder="Todo ekle..."/>
                             <button onClick={handleAddTodo} disabled={text?.length === 0} className="w-full bg-indigo-500 text-white p-2 rounded-lg hover:bg-indigo-600 disabled:cursor-not-kapatallowed disabled:bg-indigo-400">Ekle</button>
                         </>
                     ) : (
