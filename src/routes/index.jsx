@@ -3,6 +3,7 @@ import Root from "./root";
 import Home from "../pages";
 import Done from "../pages/done";
 import Waiting from "../pages/waiting";
+import Edit from "../pages/edit";
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
             {
                 path: "/bekleyenler",
                 element: <Waiting/>
+            },
+            {
+                path: "/duzenle/:id",
+                element: <Edit/>
             }
         ]
     }

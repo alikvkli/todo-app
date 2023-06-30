@@ -4,7 +4,8 @@ import classNames from "classnames"
 import { deleteTodo, updateTodo } from "../services"
 import { useDispatch } from "react-redux"
 import { deleteSingleTodo, setLoading, updateSingleTodo } from "../features/todo"
-
+import {LuClipboardEdit} from "react-icons/lu"
+import { Link } from "react-router-dom"
 
 export default function TodoCard({ data }) {
     const dispatch = useDispatch();
@@ -51,11 +52,14 @@ export default function TodoCard({ data }) {
                 <div className="hidden group-hover:flex gap-2">
                     <button onClick={handleUpdate}>
                         {data?.status === "2" ? (
-                            <AiOutlineCheckCircle color="green" size={20} />
+                            <AiOutlineCheckCircle color="green" size={18} />
                         ) : (
-                            <AiOutlineFieldTime color="gray" size={20} />
+                            <AiOutlineFieldTime color="purple" size={19} />
                         )}
                     </button>
+                    <Link to={`/duzenle/${data?.id}`}>
+                        <LuClipboardEdit color="indigo" size={16}/>
+                    </Link>
                     <button onClick={handleDelete}>
                         <RiDeleteBin6Line color="red" size={18} />
                     </button>

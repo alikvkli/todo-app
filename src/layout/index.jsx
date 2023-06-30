@@ -7,7 +7,7 @@ import {  useState } from "react";
 import { addTodo, authService, getAllTodo } from "../services";
 import { setLogout, setSingleTodo, setTodos, setUser } from "../features/todo";
 
-export default function Layout({ children, title }) {
+export default function Layout({ children, title, element }) {
     const { login, user, loading } = useSelector(state => state.todo);
     const dispatch = useDispatch();
     const [username, setUsername] = useState("");
@@ -111,8 +111,9 @@ export default function Layout({ children, title }) {
                             </div>
                         </div>
                     )}
-                    <div className="flex w-full flex-1 items-center justify-between">
-                        <h3 className="text-lg text-center py-4 text-indigo-600 font-semibold border-b-2 border-zinc-100 w-full">{title}</h3>
+                    <div className="flex  border-[1px] border-zinc-200 w-full  flex-1 items-center justify-between">
+                        <h3 className="text-lg text-center py-4 text-indigo-600 font-semibold  w-full">{title}</h3>
+                        {element}
                         <button onClick={handleMenu} className="pr-3 max-sm:block hidden">
                             <AiOutlineMenu className="text-indigo-600" size={24} />
                         </button>
